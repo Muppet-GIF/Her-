@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>I Love You ♥ - Time</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('Images/background.png') center/cover no-repeat, black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            color: #ffffff;
+            margin: 30px 0;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px; 
+            box-sizing: border-box;
+        }
+
+        .text-box {
+            width: 100%;
+            max-width: 750px; 
+            height: 50px;
+            perspective: 1000px;
+            margin: 10px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text-box-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(0);
+            transition: transform 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text-box.flipped .text-box-inner {
+            transform: rotateY(180deg);
+        }
+
+        .text-box-front,
+        .text-box-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-box-front {
+            background: white;
+            color: black;
+            text-align: center;
+        }
+
+        .text-box-back {
+            background: #ff6b6b;
+            color: white;
+            transform: rotateY(180deg);
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(to right, #ff6b6b, #f06595);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #6df5ff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #6df5ff;
+            bottom: -4px;
+            left: 50%;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: linear-gradient(to right, #ff6b6b, #f06595);
+                padding: 10px 0;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 10px 0;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-box {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="flowers.html">Flowers</a>
+            <a href="time.html">Time</a>
+            <a href="memories.html">Memories</a>
+            <a href="pettle2.html">Letters</a>
+        </div>
+    </nav>
+
+    <h1>I Love You ♥</h1>
+    <div class="content" id="boxes-container"></div>
+
+    <script>
+        const events = [
+            {
+                id: "relationship-time",
+                frontText: "How long we've been together:",
+                backText: "I'm so lucky to spend time with you ❤️",
+                calculateDynamicDate: function () {
+                    return new Date("2024-08-19T00:00:00");
+                },
+                calculateElapsedTime: true 
+            },
+            {
+                id: "christmas-time",
+                frontText: "How long until Christmas:",
+                backText: "Christmas is the best time with you! 🎄",
+                calculateDynamicDate: function () {
+                    const now = new Date();
+                    const christmas = new Date(now.getFullYear(), 11, 25);
+                    if (now > christmas) {
+                        christmas.setFullYear(now.getFullYear() + 1);
+                    }
+                    return christmas;
+                }
+            },
+            {
+                id: "valentines-time",
+                frontText: "How long until Valentine's Day:",
+                backText: "Valentine's is special because of you! ❤️",
+                calculateDynamicDate: function () {
+                    const now = new Date();
+                    const valentines = new Date(now.getFullYear(), 1, 14);
+                    if (now > valentines) {
+                        valentines.setFullYear(now.getFullYear() + 1);
+                    }
+                    return valentines;
+                }
+            },
+            {
+                id: "my-birthday-time",
+                frontText: "How long until my birthday:",
+                backText: "Another year to celebrate together! 🎉",
+                calculateDynamicDate: function () {
+                    const now = new Date();
+                    const myBirthday = new Date(now.getFullYear(), 2, 23);
+                    if (now > myBirthday) {
+                        myBirthday.setFullYear(now.getFullYear() + 1);
+                    }
+                    return myBirthday;
+                }
+            },
+            {
+                id: "olivia-birthday-time",
+                frontText: "How long until Olivia's birthday:",
+                backText: "Can't wait to celebrate your day! 🎂",
+                calculateDynamicDate: function () {
+                    const now = new Date();
+                    const oliviaBirthday = new Date(now.getFullYear(), 3, 16);
+                    if (now > oliviaBirthday) {
+                        oliviaBirthday.setFullYear(now.getFullYear() + 1);
+                    }
+                    return oliviaBirthday;
+                }
+            },
+            {
+                id: "next-see-time",
+                frontText: "How long until I see Olivia:",
+                backText: "Every moment with you is worth waiting for. 💕",
+                calculateDynamicDate: function () {
+                    const now = new Date();
+                    const nextSunday = new Date(now);
+                    nextSunday.setHours(10, 0, 0, 0); 
+                    nextSunday.setDate(now.getDate() + (7 - now.getDay()) % 7);
+                    if (now > nextSunday) {
+                        nextSunday.setDate(nextSunday.getDate() + 7);
+                    }
+                    return nextSunday;
+                }
+            }
+        ];
+
+        function createTextBox(event) {
+            const container = document.getElementById("boxes-container");
+            const box = document.createElement("div");
+            box.classList.add("text-box");
+            box.id = event.id;
+
+            const innerBox = document.createElement("div");
+            innerBox.classList.add("text-box-inner");
+
+            const frontText = document.createElement("div");
+            frontText.classList.add("text-box-front");
+            frontText.innerHTML = `${event.frontText} <br> <span id="${event.id}-time"></span>`;
+
+            const backText = document.createElement("div");
+            backText.classList.add("text-box-back");
+            backText.innerText = event.backText;
+
+            innerBox.appendChild(frontText);
+            innerBox.appendChild(backText);
+
+            box.appendChild(innerBox);
+            container.appendChild(box);
+
+            updateTextBoxTime(event);
+            box.addEventListener("click", () => box.classList.toggle("flipped"));
+        }
+
+        function updateTextBoxTime(event) {
+            const timeSpan = document.getElementById(`${event.id}-time`);
+            const targetDate = event.calculateDynamicDate();
+            let timeDiff = targetDate - new Date();
+            let days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            if (event.calculateElapsedTime) {
+                days = Math.abs(days);
+                hours = Math.abs(hours);
+                minutes = Math.abs(minutes);
+                seconds = Math.abs(seconds);
+            }
+
+            timeSpan.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            setTimeout(() => updateTextBoxTime(event), 1000);
+        }
+
+        events.forEach(createTextBox);
+
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
