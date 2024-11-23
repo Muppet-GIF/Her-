@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Love You ♥ - Our Journey</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ADD8E6;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      color: #fff;
+      margin: 100px;
+      font-family: 'Poppins', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .timeline {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .timeline .milestone {
+      position: relative;
+      width: 80%;
+      margin: 30px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .milestone img {
+  width: 100%;
+  max-width: 400px;
+  height: 300px; 
+  object-fit: cover; 
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+
+    .milestone h3 {
+      font-size: 2.5em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .milestone p {
+      color: #555;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      height: 100%;
+      border-left: 2px solid #ddd;
+      transform: translateX(-50%);
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .journey-map {
+      position: relative;
+      height: 400px;
+      background-color: #e0e0e0;
+      width: 100%;
+      margin-top: 50px;
+    }
+
+    @keyframes moveVehicle {
+      0% { left: -100px; }
+      100% { left: 100%; }
+    }
+.footer {
+  text-align: center;
+  padding: 15px 20px;
+  background: linear-gradient(to right, #ff6b6b, #f06595);
+  color: white;
+  margin-top: 30px; 
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.footer p {
+  font-size: 1em; 
+  margin: 5px 0; 
+  color: #fff; 
+}
+
+.footer p strong {
+  font-size: 1.1em; 
+  color: #ffddf4; 
+}
+
+.footer-heart {
+  font-size: 1.5em;
+  margin-top: 5px; 
+  animation: heartbeat 1.5s infinite; 
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); 
+  }
+}
+
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(to right, #ff6b6b, #f06595);
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      margin: 0 10px;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #6df5ff;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #6df5ff;
+      bottom: -4px;
+      left: 50%;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: linear-gradient(to right, #ff6b6b, #f06595);
+        padding: 10px 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+     <nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="flowers.html">Flowers</a>
+            <a href="time.html">Time</a>
+            <a href="memories1.html">Memories</a>
+            <a href="pettle2.html">Letters</a>
+        </div>
+    </nav>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('show');
+    }
+  </script>
+
+  <h1>Our Journey</h1>
+
+  <div class="timeline">
+    <div class="milestone">
+      <h3>Start of the Journey</h3>
+      <img src="Images/MeTalking.jpg" alt="Start Image">
+      <p>July 23, 2024 — A random Snapchat add seemed like nothing at the time. We started chatting, and what began as casual conversation quickly turned into something more. Looking back, it was the start of a journey I never saw coming.</p>
+    </div>
+
+    <div class="milestone">
+      <h3>The meetup</h3>
+      <img src="Images/UsMeeting.jpg" alt="Meeting Image">
+      <p>August 2024 — We met in person for the first time. Honestly, I wasnt expecting much—just a casual meetup to see where things might go. But it turned out to be so much more. From the moment I saw her, I was captivated. The day was incredible, even though it felt far too short. We spent it holding hands, sharing laughs, and ending with a warm hug that I still think about. It was the kind of day you dont forget.</p>
+    </div>
+
+    <div class="milestone">
+      <h3>The Question</h3>
+      <img src="Images/HandHold.jpg" alt="Hand Hold Image">
+      <p>August 19, 2024 — Today was the day. I was nervous, unsure of how things would go, but I knew I had to ask. Finding a quiet moment, I gathered the courage and said the words: “Will you be my girlfriend?</p>
+      <p> Her immediate “yes” was followed by the biggest hug Ive ever received. Ill always remember this as one of the best days of my life—a moment that marked the start of something truly special.</p>
+    </div>
+
+    <div class="milestone">
+      <h3>The being of the future</h3>
+      <img src="Images/Coco.jpg" alt="Coco Image">
+      <p>September 2024 — While on holiday, I picked up a stuffed sloth as a little gift. It was cute, though not nearly as cute as her smile. When we met again, I kept it tucked away in my bag, waiting for the perfect moment. </p>
+      <p>When I finally revealed it, her smile lit up with pure joy, and for a second, it felt like a glimpse into the future. Could this little sloth someday remind us of something bigger, something well share together?</p>
+    </div>
+
+    <div class="milestone">
+      <h3>Today</h3>
+      <img src="Images/Us.jpg" alt="Us together">
+      <p>November 22, 2024 — And here we are today, the day Im writing this. A million thoughts about her fill my mind, each one reminding me of how much she means to me. Olivia, I love you, and I always will. I cant wait to see what the future holds for us and all the amazing things we  will share together.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+  <p>To Olivia,</p>
+  <p>You are the reason behind my smile, my laughter, and my every moment of joy. <br>
+  I can't wait to write the next chapters of our story together. 💕</p>
+  <p>I'm Forever yours,</p>
+  <p><strong>Jack</strong></p>
+  <div class="footer-heart">❤️</div>
+</div>
+
+
+  <script>
+    window.addEventListener('scroll', function() {
+      const milestones = document.querySelectorAll('.milestone');
+      milestones.forEach(milestone => {
+        const rect = milestone.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+          milestone.style.animation = 'fadeIn 1s forwards';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

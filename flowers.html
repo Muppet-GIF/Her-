@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>I Love You ♥ - Flowers</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: black;
+            background: url(Images/background.png) center/cover no-repeat;
+            overflow: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(to right, #ff6b6b, #f06595);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #6df5ff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #6df5ff;
+            bottom: -4px;
+            left: 50%;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: linear-gradient(to right, #ff6b6b, #f06595);
+                padding: 10px 0;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 10px 0;
+                font-size: 1rem;
+            }
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .leaf {
+            border-radius: 5px 70%;
+            border-style: solid;
+            border-width: 10px;
+            border-color: black;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 100px; 
+            left: 50px;
+            transform-origin: left top;
+            animation: rotateMotion 5s linear infinite;
+            z-index: 2;  
+        }
+
+        #n1 { animation-delay: 1s; }
+        #n2 { animation-delay: 2s; }
+        #n3 { animation-delay: 3s; }
+        #n4 { animation-delay: 4s; }
+        #n5 { animation-delay: 5s; }
+
+        @keyframes rotateMotion {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .stem {
+            width: 20px;
+            height: 330px;
+            background-color: #228B22; 
+            margin-top: 50px;
+            margin-left: 40px;
+            border-radius: 10px;
+            animation: growStem 2s infinite alternate;
+            z-index: 1; 
+        }
+
+        @keyframes growStem {
+            0% { transform: scaleY(0.5); }
+            100% { transform: scaleY(1); }
+        }
+
+        .flower-button {
+            position: absolute;
+            top: 25%; 
+            left: 80%; 
+            transform: translate(-50%, -50%);
+            background-color: yellow;
+            color: white;
+            border: none;
+            border-radius: 50%; 
+            font-size: 1.5rem; 
+            cursor: pointer;
+            z-index: 3; 
+            height: 50px; 
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+        }
+
+        .flower-button:hover {
+            background-color: #f06595;
+        }
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 90%;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .text-container {
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+        }
+
+        .text-section {
+            width: 100%; 
+            text-align: center; 
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            font-size: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .text-section {
+                width: 45%;
+                font-size: 120%;
+            }
+        }
+
+        .falling-heart {
+            position: absolute;
+            top: -50px;
+            width: 50px;
+            height: 50px;
+            background-image: url('FlowerIcon.png');
+            background-size: cover;
+            animation: fall 3s linear forwards, rotateHeart 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -50px;
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+
+        @keyframes rotateHeart {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+     <nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="flowers.html">Flowers</a>
+            <a href="time.html">Time</a>
+            <a href="memories1.html">Memories</a>
+            <a href="pettle2.html">Letters</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="pettle1.html"><div class="leaf" id="n1"></div></a>
+        <a href="pettle2.html"><div class="leaf" id="n2"></div></a>
+        <a href="pettle3.html"><div class="leaf" id="n3"></div></a>
+        <a href="pettle4.html"><div class="leaf" id="n4"></div></a>
+        <a href="pettle5.html"><div class="leaf" id="n5"></div></a>
+        <div class="stem"></div>
+        <button class="flower-button" id = "interactive-heart" aria-label="Heart animation">👆</button>
+    </div>
+
+    <div class="text-container">
+        <div class="text-section left">
+            <p>Flowers hold a special meaning—they symbolize beauty, love, and emotions that words cannot always capture. This flower is more than just a decoration; its a promise that some things, like memories and feelings, can bloom forever. Each petal represents a cherished moment, a thought, or a dream shared. Though real flowers fade, this one will live forever, reminding us of the timeless bond we share. Its here to remind you that beauty and love dont have to fade—they can grow stronger with time.</p>
+        </div>
+        <div class="text-section right">
+            <p>Youve brought so much light and happiness into my life, more than you probably know. This little flower is just a small token of everything I wish I could express. Just like how it will never wither, my feelings for you will only grow brighter and stronger. Every time you look at it, I hope youre reminded of how truly amazing and special you are to me. Thank you for being you</p>
+        </div>
+    </div>
+
+   <script>
+    const colors = ["#ADD8E6", "#FFB6C1", "#f05151"]; 
+    const heartImages = [ 
+        'FlowerIcon.png',
+        'lowerRed.png',
+        'FlowerBlue.png'
+    ]; 
+
+    function randomizeColors() {
+        const petals = document.querySelectorAll('.leaf');
+        petals.forEach(petal => {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            petal.style.backgroundColor = randomColor;
+        });
+    }
+
+    window.addEventListener('load', randomizeColors);
+
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('show');
+    }
+
+    function Hearts() {
+        const numberOfHearts = 20;
+
+        for (let i = 0; i < numberOfHearts; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('falling-heart');
+
+            const randomX = Math.random() * window.innerWidth; 
+            const randomY = Math.random() * 150 + 50; 
+            
+            const randomImage = heartImages[Math.floor(Math.random() * heartImages.length)];
+            heart.style.backgroundImage = `url('${randomImage}')`;
+
+            heart.style.left = `${randomX}px`;
+            heart.style.animationDelay = `${Math.random() * 2}s`;
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove(); 
+            }, 6000);
+        }
+
+        const interactiveHeart = document.getElementById('interactive-heart');
+        interactiveHeart.classList.add('spin');
+        
+        setTimeout(() => {
+            interactiveHeart.classList.remove('spin');
+        }, 1000);
+    }
+
+    const interactiveHeart = document.getElementById('interactive-heart');
+    interactiveHeart.addEventListener('click', Hearts);
+</script>
+</body>
+</html>

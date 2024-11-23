@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Olivia's Coupons - Special offers and fun coupons to download.">
+    <title>I Love You ♥ - Coupons</title>
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: url('Images/background.png') center/cover no-repeat;
+    background-color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(to right, #ff6b6b, #f06595);
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 15px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #6df5ff;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #6df5ff;
+    bottom: -4px;
+    left: 50%;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: linear-gradient(to right, #ff6b6b, #f06595);
+        padding: 10px 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin: 10px 0;
+    }
+
+        main {
+        padding-top: 80px; 
+    }
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    padding-top: 70px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.coupons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.coupon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.coupon:hover {
+    transform: translateY(-10px);
+}
+
+.coupon img {
+    width: 100%; 
+    max-height: 200px; 
+    object-fit: cover; 
+    border-radius: 8px;
+}
+
+.coupon p {
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+.download-btn {
+    margin-top: auto;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.download-btn:hover {
+    background-color: #e65c4f;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px 15px;
+    background: linear-gradient(to right, #ff6b6b, #f06595);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer p {
+    font-size: 0.9em;
+    margin: 3px 0;
+    color: #fff;
+}
+
+.footer p strong {
+    font-size: 1.1em;
+    color: #ffddf4;
+}
+
+.footer-heart {
+    font-size: 1.3em;
+    margin-top: 3px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+        
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="flowers.html">Flowers</a>
+            <a href="time.html">Time</a>
+            <a href="memories1.html">Memories</a>
+            <a href="pettle2.html">Letters</a>
+        </div>
+    </nav>
+    <main>
+        <section class="coupons">
+            <div class="coupon">
+                <img src="Images/CouponILoveYouMore.png" alt="I love you more win coupon">
+                <p>"I love you more win"</p>
+                <a href="Images/CouponILoveYouMore.png" class="download-btn" download="I_Love_You_More_Win">Download Coupon</a>
+            </div>
+
+            <div class="coupon">
+                <img src="Images/CouponRobloxAllDay.png" alt="Roblox all day coupon">
+                <p>"Roblox all day"</p>
+                <a href="Images/CouponRobloxAllDay.png" class="download-btn" download="Roblox_All_Day">Download Coupon</a>
+            </div>
+
+            <div class="coupon">
+                <img src="Images/CouponYouChoose.png" alt=" You get to choose what we do for the day">
+                <p>"You get to choose what we do for the day"</p>
+                <a href="Images/CouponYouChoose.png" class="download-btn" download="What_We_Do">Download Coupon</a>
+            </div>
+
+              <div class="coupon">
+                <img src="Images/CouponDayOfHugs.png" alt="Day Of Hugs">
+                <p>"Day of hugs"</p>
+                <a href="Images/CouponDayOfHugs.png" class="download-btn" download="Hug_Day">Download Coupon</a>
+            </div>
+        </section>
+    </main>
+ <div class="footer">
+        <p>To Olivia,</p>
+        <p>You are the reason behind my smile, my laughter, and my every moment of joy. <br>
+        I can't wait to write the next chapters of our story together. 💕</p>
+        <p>I'm Forever yours,</p>
+        <p><strong>Jack</strong></p>
+        <div class="footer-heart">❤️</div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        }
+    </script>
+</body>
+
+</html>

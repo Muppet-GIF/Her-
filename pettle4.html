@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>I Love You ♥ - A Place Called Home</title>
+    <style>
+
+nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(to right, #ff6b6b, #f06595);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #6df5ff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #6df5ff;
+            bottom: -4px;
+            left: 50%;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: linear-gradient(to right, #ff6b6b, #f06595);
+                padding: 10px 0;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 10px 0;
+            }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fce0d6;
+            color: #5e4a41;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+            background: url(/Images/background.png) center/cover no-repeat;
+            overflow: hidden;          
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            animation: backgroundAnimation 30s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+
+        h1, h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #e57f6e;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #f3b7a2;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #f2d1c9;
+        }
+
+        .description p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #6f4f40;
+        }
+
+        .interactive h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #6f3f4f;
+        }
+
+        .clickable-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .item {
+            background-color: #f5a5b5;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+        }
+
+        .item:hover {
+            transform: scale(1.1);
+            background-color: #f28c95;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #5e4a41;
+            background-color: #f8d1d4;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4em;
+            color: #ff7f7f;
+            animation: heartAnimation 4s infinite ease-in-out;
+            z-index: 2;
+        }
+
+        @keyframes heartAnimation {
+            0% { transform: translate(-50%, 0) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+            100% { transform: translate(-50%, 0) scale(1); }
+        }
+
+        .audio-player {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 700px;
+            z-index: 1;
+            text-align: center;
+        }
+
+        audio {
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .audio-player .controls {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #6f4f40;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .interactive h2 {
+                font-size: 2em;
+            }
+
+            .item {
+                font-size: 1.1em;
+                padding: 12px 20px;
+            }
+
+            .description p {
+                font-size: 1.1em;
+            }
+
+            .audio-player {
+                max-width: 90%;
+            }
+
+            .heart {
+                font-size: 3em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+
+            .interactive h2 {
+                font-size: 1.8em;
+            }
+
+            .item {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+
+            .description p {
+                font-size: 1em;
+            }
+
+            .audio-player {
+                max-width: 90%;
+            }
+
+            .heart {
+                font-size: 2.5em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="flowers.html">Flowers</a>
+            <a href="time.html">Time</a>
+            <a href="memories1.html">Memories</a>
+            <a href="pettle2.html">Letters</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="header">
+            <h1>A Place Called Home</h1>
+            <p>For You, My Love</p>
+        </header>
+
+        <section class="content">
+            <div class="description">
+                <h2>What "Home" Means to Me</h2>
+                <p>
+                    Home isn't just a house, it's wherever you are, Olivia. It's the place 
+                    where love grows, where my heart is at peace, and where I find comfort 
+                    knowing you are with me. Every moment with you makes our space feel 
+                    like the safest and coziest place in the world.
+                </p>
+            </div>
+
+            <div class="interactive">
+                <h2>Click to Discover More</h2>
+                <div class="clickable-items">
+                    <div class="item fireplace" onclick="showMessage('fireplace')">🔥 Fireplace</div>
+                    <div class="item window" onclick="showMessage('window')">🪟 Window</div>
+                    <div class="item pillow" onclick="showMessage('pillow')">🛏 Pillow</div>
+                    <div class="item blanket" onclick="showMessage('blanket')">🛋 Blanket</div>
+                </div>
+                <div id="message" class="message"></div>
+            </div>
+        </section>
+    </div>
+
+    <div class="heart">💖</div>
+
+    <div class="audio-player">
+        <audio controls>
+            <source src="Music/Ed.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const messages = [
+                "You are the light of my life, Olivia.",
+                "Every moment with you feels like magic.",
+                "Home is wherever I'm with you, my love.",
+                "You make everything better, just by being you.",
+                "I'm so lucky to have you in my life."
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            const messageElement = document.getElementById("message");
+            messageElement.innerHTML = randomMessage;
+        };
+
+        function showMessage(item) {
+            const message = document.getElementById("message");
+            if (item === 'fireplace') {
+                message.innerHTML = "<strong>Fireplace:</strong> The warmth that surrounds us when we are together. It's where we share stories, laugh, and enjoy every cozy moment.";
+            } else if (item === 'window') {
+                message.innerHTML = "<strong>Window:</strong> A glimpse of the world outside, but no matter where we are, you make every place feel like home.";
+            } else if (item === 'pillow') {
+                message.innerHTML = "<strong>Pillow:</strong> Where we rest our heads, and dream of a future filled with love, laughter, and endless joy together.";
+            } else if (item === 'blanket') {
+                message.innerHTML = "<strong>Blanket:</strong> The soft embrace that keeps us warm at night. It's where I feel most at peace with you.";
+            }
+        }
+
+
+            function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        }
+
+    </script>
+</body>
+</html>

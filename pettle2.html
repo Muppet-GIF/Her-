@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You ♥ - Letters</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ADD8E6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem; 
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem; 
+            color: #fff;
+            margin: 2rem;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+        }
+
+        #items {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: auto;
+            justify-items: center;
+            align-items: center;
+            gap: 2rem; 
+            max-width: 100%;
+            margin: auto;
+        }
+
+        #rightwing, #leftwing {
+            max-width: 80%;
+            animation: flap 1s infinite;
+        }
+
+        #leftwing {
+            animation: flapLeft 1s infinite;
+        }
+
+        @keyframes flap {
+            0% {
+                transform: rotate(10deg) translate(0, 15px);
+            }
+            50% {
+                transform: rotate(5deg) translate(0, 15px);
+            }
+        }
+
+        @keyframes flapLeft {
+            0% {
+                transform: rotate(-10deg) translate(0, 15px);
+            }
+            50% {
+                transform: rotate(-5deg) translate(0, 15px);
+            }
+        }
+
+        #letter {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+    #heart {
+    max-width: 35%;
+    position: absolute;
+    top: 22%; 
+    left: 35%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1;
+    animation: heart 1s infinite;
+}
+
+
+        @keyframes heart {
+            0% {
+                transform: scale(0.8) translate(0, 0);
+            }
+            50% {
+                transform: scale(0.9) translate(0, 8px);
+            }
+            100% {
+                transform: scale(0.8);
+            }
+        }
+
+        #envelope {
+            max-width: 100%;
+            animation: floaty 1s infinite;
+        }
+
+        @keyframes floaty {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(0, 12px);
+            }
+        }
+
+              nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(to right, #ff6b6b, #f06595);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #6df5ff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #6df5ff;
+            bottom: -4px;
+            left: 50%;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: linear-gradient(to right, #ff6b6b, #f06595);
+                padding: 10px 0;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 10px 0;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(to right, #ff6b6b, #f06595);
+            color: white;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer p {
+            font-size: 1rem;
+            margin: 5px 0;
+            color: #fff;
+        }
+
+        .footer p strong {
+            font-size: 1.1rem;
+            color: #ffddf4;
+        }
+
+        .footer-heart {
+            font-size: 1.5rem;
+            margin-top: 5px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="flowers.html">Flowers</a>
+            <a href="time.html">Time</a>
+            <a href="memories1.html">Memories</a>
+            <a href="pettle2.html">Letters</a>
+        </div>
+    </nav>
+
+    <main>
+        <div id="items">
+            <img id="leftwing" src="Images/leftwing.png" alt="Left Wing">
+            <div id="letter">
+                <a href="Letters.html"><img id="heart" src="Images/heart.png" alt="Heart"></a>
+                <img id="envelope" src="Images/envelop.png" alt="Envelope">
+            </div>
+            <img id="rightwing" src="Images/rightwing.png" alt="Right Wing">
+        </div>
+    </main>
+
+    <div class="footer">
+        <p>To Olivia,</p>
+        <p>You are the reason behind my smile, my laughter, and my every moment of joy. <br>
+            I can't wait to write the next chapters of our story together. 💕</p>
+        <p>I'm Forever yours,</p>
+        <p><strong>Jack</strong></p>
+        <div class="footer-heart">❤️</div>
+    </div>
+</body>
+</html>
