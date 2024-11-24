@@ -5,238 +5,257 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>I Love You ♥ - Flowers</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background: black;
-            background: url(Images/background.png) center/cover no-repeat;
-            overflow: hidden;
-        }
+      /* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: black;
+    background: url(Images/background.png) center/cover no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: linear-gradient(to right, #ff6b6b, #f06595);
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-        }
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(to right, #ff6b6b, #f06595);
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
 
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            margin: 0 10px;
-            position: relative;
-        }
+nav a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+    position: relative;
+}
 
-        nav a:hover {
-            color: #6df5ff;
-        }
+nav a:hover {
+    color: #6df5ff;
+}
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: #6df5ff;
-            bottom: -4px;
-            left: 50%;
-            transition: width 0.3s ease, left 0.3s ease;
-        }
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #6df5ff;
+    bottom: -4px;
+    left: 50%;
+    transition: width 0.3s ease, left 0.3s ease;
+}
 
-        nav a:hover::after {
-            width: 100%;
-            left: 0;
-        }
+nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
 
-        .menu-icon {
-            display: none;
-            font-size: 30px;
-            color: white;
-            cursor: pointer;
-        }
+/* Hamburger Menu Icon */
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
 
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
+.nav-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: block;
-            }
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
 
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                background: linear-gradient(to right, #ff6b6b, #f06595);
-                padding: 10px 0;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: linear-gradient(to right, #ff6b6b, #f06595);
+        padding: 10px 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
 
-            .nav-links.show {
-                display: flex;
-            }
+    .nav-links.show {
+        display: flex;
+    }
 
-            .nav-links a {
-                margin: 10px 0;
-                font-size: 1rem;
-            }
-        }
+    .nav-links a {
+        margin: 10px 0;
+        font-size: 1rem;
+    }
+}
 
-        .container {
-            position: relative;
-            text-align: center;
-            margin: 20px 0;
-        }
+/* Container and Elements */
+.container {
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+}
 
-        .leaf {
-            border-radius: 5px 70%;
-            border-style: solid;
-            border-width: 10px;
-            border-color: black;
-            height: 100px;
-            width: 100px;
-            position: absolute;
-            top: 100px; 
-            left: 50px;
-            transform-origin: left top;
-            animation: rotateMotion 5s linear infinite;
-            z-index: 2;  
-        }
+.leaf {
+    border-radius: 5px 70%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 100px; 
+    left: 50px;
+    transform-origin: left top;
+    animation: rotateMotion 5s linear infinite;
+    z-index: 2;  
+}
 
-        #n1 { animation-delay: 1s; }
-        #n2 { animation-delay: 2s; }
-        #n3 { animation-delay: 3s; }
-        #n4 { animation-delay: 4s; }
-        #n5 { animation-delay: 5s; }
+#n1 { animation-delay: 1s; }
+#n2 { animation-delay: 2s; }
+#n3 { animation-delay: 3s; }
+#n4 { animation-delay: 4s; }
+#n5 { animation-delay: 5s; }
 
-        @keyframes rotateMotion {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+@keyframes rotateMotion {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
-        .stem {
-            width: 20px;
-            height: 330px;
-            background-color: #228B22; 
-            margin-top: 50px;
-            margin-left: 40px;
-            border-radius: 10px;
-            animation: growStem 2s infinite alternate;
-            z-index: 1; 
-        }
+.stem {
+    width: 20px;
+    height: 330px;
+    background-color: #228B22; 
+    margin-top: 50px;
+    margin-left: 40px;
+    border-radius: 10px;
+    animation: growStem 2s infinite alternate;
+    z-index: 1; 
+}
 
-        @keyframes growStem {
-            0% { transform: scaleY(0.5); }
-            100% { transform: scaleY(1); }
-        }
+@keyframes growStem {
+    0% { transform: scaleY(0.5); }
+    100% { transform: scaleY(1); }
+}
 
-        .flower-button {
-            position: absolute;
-            top: 25%; 
-            left: 80%; 
-            transform: translate(-50%, -50%);
-            background-color: yellow;
-            color: white;
-            border: none;
-            border-radius: 50%; 
-            font-size: 1.5rem; 
-            cursor: pointer;
-            z-index: 3; 
-            height: 50px; 
-            width: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center; 
-        }
+/* Flower Button */
+.flower-button {
+    position: absolute;
+    top: 25%; 
+    left: 80%; 
+    transform: translate(-50%, -50%);
+    background-color: yellow;
+    color: white;
+    border: none;
+    border-radius: 50%; 
+    font-size: 1.5rem; 
+    cursor: pointer;
+    z-index: 3; 
+    height: 50px; 
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
 
-        .flower-button:hover {
-            background-color: #f06595;
-        }
+.flower-button:hover {
+    background-color: #f06595;
+}
 
-        .text-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            width: 90%;
-            gap: 20px;
-        }
+/* Text Container */
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 90%;
+    gap: 20px;
+}
 
-        @media (min-width: 768px) {
-            .text-container {
-                flex-direction: row;
-                justify-content: space-evenly;
-            }
-        }
+@media (min-width: 768px) {
+    .text-container {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
 
-        .text-section {
-            width: 100%; 
-            text-align: center; 
-            padding: 10px;
-            border: 2px solid white;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.1); 
-            font-size: 100%;
-        }
+.text-section {
+    width: 100%; 
+    text-align: center; 
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1); 
+    font-size: 100%;
+}
 
-        @media (min-width: 768px) {
-            .text-section {
-                width: 45%;
-                font-size: 120%;
-            }
-        }
+@media (min-width: 768px) {
+    .text-section {
+        width: 45%;
+        font-size: 120%;
+    }
+}
 
-        .falling-heart {
-            position: absolute;
-            top: -50px;
-            width: 50px;
-            height: 50px;
-            background-image: url('FlowerIcon.png');
-            background-size: cover;
-            animation: fall 3s linear forwards, rotateHeart 3s linear infinite;
-        }
+@media (max-width: 480px) {
+    .text-section {
+        padding: 5px;
+        font-size: 90%;
+    }
+    .text-container {
+        gap: 10px;
+    }
+}
 
-        @keyframes fall {
-            0% {
-                top: -50px;
-                opacity: 1;
-            }
-            100% {
-                top: 100vh;
-                opacity: 0;
-            }
-        }
+/* Falling Hearts Animation */
+.falling-heart {
+    position: absolute;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-image: url('FlowerIcon.png');
+    background-size: contain;
+    animation: fall 3s linear forwards, rotateHeart 3s linear infinite;
+}
 
-        @keyframes rotateHeart {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+@keyframes fall {
+    0% {
+        top: -50px;
+        opacity: 1;
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+    }
+}
+
+@keyframes rotateHeart {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
     </style>
 </head>
