@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You ♥ - Family</title>
+    <style>
+
+ nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to right, #ff6b6b, #f06595);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #6df5ff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #6df5ff;
+            bottom: -4px;
+            left: 50%;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: linear-gradient(to right, #ff6b6b, #f06595);
+                padding: 10px 0;
+                position: absolute;
+                bottom: 60px;
+                left: 0;
+                right: 0;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 10px 0;
+            }
+        }
+
+        :root {
+            --bg-color: rgb(240, 104, 240);
+            --text-color: white;
+            --font-family: 'Arial', sans-serif;
+            --hover-scale: 1.1;
+            --hover-blur: 3px;
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: var(--font-family);
+            height: 100vh;
+            color: var(--text-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        img {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 20vw;
+            max-width: 250px;
+            height: 150px;
+            object-fit: cover;
+            transition: transform var(--transition-speed) ease-in-out, filter var(--transition-speed) ease-in-out;
+            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        img:hover {
+            transform: scale(var(--hover-scale));
+            filter: blur(var(--hover-blur));
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 100%;
+            max-height: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .modal-content img {
+            width: 50%;
+            max-width: 400px;
+            max-height: 710px;
+            height: auto;
+
+            object-fit: contain;
+        }
+
+        .close-btn,
+        .prev-btn,
+        .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background var(--transition-speed) ease;
+        }
+
+        .close-btn {
+            top: 5%;
+            right: 5%;
+        }
+
+        .prev-btn {
+            left: 5%;
+        }
+
+        .next-btn {
+            right: 5%;
+        }
+
+        .close-btn:hover,
+        .prev-btn:hover,
+        .next-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .no-hover {
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            main {
+                gap: 0.5rem;
+            }
+
+            img {
+                width: 40vw;
+            }
+
+            .modal-content img {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            img {
+                width: 50vw;
+            }
+
+            .modal-content img {
+                width: 90%;
+            }
+
+            .close-btn,
+            .prev-btn,
+            .next-btn {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Our Family</h1>
+    </header>
+
+    <main>
+        <div>
+            <img src="Images/All3.jpg" alt="Image 1">
+            <img src="Images/Bedtime.jpg" alt="Image 2">
+            <img src="Images/Coco.jpg" alt="Image 3">
+            <img src="Images/Coco1.jpg" alt="Image 4">
+            <img src="Images/Coco2.jpg" alt="Image 5">
+            <img src="Images/Coco3.jpg" alt="Image 6">
+            <img src="Images/CocoLenny.jpg" alt="Image 7">
+            <img src="Images/Darwin.jpg" alt="Image 8">
+            <img src="Images/Darwin2.jpg" alt="Image 9">
+            <img src="Images/Darwin3.jpg" alt="Image 10">
+            <img src="Images/Dino.jpg" alt="Image 11">
+            <img src="Images/DinoCoco.jpg" alt="Image 12">
+            <img src="Images/Lenny.jpg" alt="Image 13">
+            <img src="Images/Lenny1.jpg" alt="Image 14">
+            <img src="Images/Lenny2.jpg" alt="Image 15">
+            <img src="Images/LennyCoco.jpg" alt="Image 16">
+        </div>
+    </main>
+
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <button class="prev-btn" onclick="changeImage(-1)">&#10094;</button>
+            <img id="modalImage" src="" alt="">
+            <button class="next-btn" onclick="changeImage(1)">&#10095;</button>
+        </div>
+    </div>
+
+<nav>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="flowers.html">Flowers</a>
+        <a href="time.html">Time</a>
+        <a href="memories1.html">Memories</a>
+        <a href="pettle2.html">Letters</a>
+        <a href="family.html">Family</a>
+    </div>
+</nav>
+
+    <script>
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        }
+
+        let currentIndex = 0;
+        const images = document.querySelectorAll("main img");
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+
+        images.forEach((img, index) => {
+            img.addEventListener("click", () => {
+                currentIndex = index;
+                modal.style.display = "flex";
+                modalImage.src = img.src;
+
+                modalImage.classList.add("no-hover");
+            });
+        });
+
+        function closeModal() {
+            modal.style.display = "none";
+            modalImage.classList.remove("no-hover");
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            if (currentIndex >= images.length) currentIndex = 0;
+
+            modalImage.src = images[currentIndex].src;
+        }
+
+        modal.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
